@@ -30,3 +30,4 @@ google-services.json
 *.hprof
 
 .DS_Store
+local.properties
