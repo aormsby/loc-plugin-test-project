@@ -9,6 +9,10 @@ android {
     compileSdk = 34
 
     defaultConfig {
+        buildFeatures {
+            buildConfig = true
+        }
+
         applicationId = "com.example.locgentester"
         minSdk = 33
         targetSdk = 34
@@ -29,15 +33,19 @@ android {
 //                "ca", "ca-rES",
 //                "cs", "cs-rCZ",
 //                "da", "da-rDK",
-//                "de", "de-rAT", "de-rCH", "de-rDE", "de-rLI",
+                "de",
+//                "de-rAT", "de-rCH", "de-rDE", "de-rLI",
 //                "el", "el-rGR",
-//                "en-rAU", "en-rCA", "en-rGB", "en-rIE", "en-rIN", "en-rNZ", "en-rSG", "en-rUS", "en-rZA",
+//                "en", "en-rAU", "en-rCA", "en-rGB", "en-rIE", "en-rIN", "en-rNZ", "en-rSG",
+                "en-rUS",
+//                "en-rZA",
 //                "es", "es-rCO", "es-rCR", "es-rEC", "es-rES", "es-rGT", "es-rHN", "es-rMX", "es-rNI", "es-rPA", "es-rPE", "es-rSV", "es-rUS",
 //                "et",
 //                "eu",
 //                "fa", "fa-rIR",
 //                "fi", "fi-rFI",
-//                "fr", "fr-rBE", "fr-rCA", "fr-rCH", "fr-rFR",
+                "fr",
+//                "fr-rBE", "fr-rCA", "fr-rCH", "fr-rFR",
 //                "gl",
 //                "gu",
 //                "he",
@@ -46,10 +54,11 @@ android {
 //                "hu", "hu-rHU",
 //                "hy",
 //                "in", "in-rID",
-//                "is",
+                "is",
 //                "it", "it-rCH", "it-rIT",
 //                "iw", "iw-rIL",
-//                "ja", "ja-rJP",
+                "ja",
+//                "ja-rJP",
 //                "ka",
 //                "kk",
 //                "km",
@@ -61,12 +70,17 @@ android {
 //                "lv", "lv-rLV",
 //                "sr-Latn",
 //                "zh", "zh-rCN", "zh-rTW",
-                "en",
 
                 // pseudolocales
                 "en-rXA",
                 "ar-rXB",
             )
+        )
+
+        buildConfigField(
+            "String",
+            "SUPPORTED_LOCALES",
+            "\"${resourceConfigurations.joinToString(", ")}\""
         )
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -94,13 +108,9 @@ android {
 }
 
 dependencies {
-
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    implementation(libs.androidx.activity)
-    implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.activity.ktx)
+    implementation(libs.androidx.ktx)
+    androidTestImplementation(libs.androidx.junit.ktx)
+    androidTestImplementation(libs.androidx.junit.runner)
+    androidTestImplementation(libs.androidx.uiautomator)
 }
